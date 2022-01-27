@@ -1,4 +1,7 @@
 <?php
+
+use function PHPSTORM_META\type;
+
 session_start();
 
 if (!isset($_SESSION['loggedin'])) {
@@ -27,9 +30,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $depmethod = $_SESSION['depmethod'];
         unset($_SESSION['depmethod']);
         $userid = $_SESSION['id'];
-        $sql = "INSERT INTO `deposits` (`userid`, `value`, `method`) VALUES (?, ?, ?)";
+        $type = 'deposit';
+        $sql = "INSERT INTO `transactions` (`userid`, `type` , `value`, `method`) VALUES (?, ?, ?, ?)";
         $stmt3 = $con->prepare($sql);
-        $stmt3->bind_param('iis', $userid, $value, $depmethod);
+        $stmt3->bind_param('isds', $userid, $type, $value, $depmethod);
         $stmt3->execute();
         $stmt3->close();
         $sql2 = "Update `accounts` SET `usd` = `usd` + ? WHERE `id` = ?";

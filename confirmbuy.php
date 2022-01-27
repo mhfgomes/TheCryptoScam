@@ -57,9 +57,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else if($value <= $balance) {
         $coin = $_POST['coin'];
         $userid = $_SESSION['id'];
-        $sql3 = "INSERT INTO `buys` (`userid`, `valuecoin`, `valueusd`, `cryptoid`) VALUES (?, ?, ?, ?)";
+        $sql3 = "INSERT INTO `transactions` (`userid`, `type`, `value`, `coin`) VALUES (?, ?, ?, ?)";
         $stmt3 = $con->prepare($sql3);
-        $stmt3->bind_param('iddi', $userid, $val, $value, $crypto_id);
+        $type = 'buy';
+        $stmt3->bind_param('isdi', $userid, $type, $val, $crypto_id);
         $stmt3->execute();
         $stmt3->close();
         

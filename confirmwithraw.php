@@ -39,9 +39,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         // $value = $_POST['value'];
         $method = $_POST['method'];
         $userid = $_SESSION['id'];
-        $sql3 = "INSERT INTO `withdraws` (`userid`, `value`, `method`) VALUES (?, ?, ?)";
+        $sql3 = "INSERT INTO `transactions` (`userid`, `type`, `value`, `method`) VALUES (?, ?, ?, ?)";
         $stmt3 = $con->prepare($sql3);
-        $stmt3->bind_param('iis', $userid, $value, $method);
+        $type = 'withdraw';
+        $stmt3->bind_param('isds', $userid, $type, $value, $method);
         $stmt3->execute();
         $stmt3->close();
         $sql2 = "Update `accounts` SET `usd` = `usd` - ? WHERE `id` = ?";

@@ -10,7 +10,7 @@ if (!isset($_SESSION['loggedin'])) {
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>CrytpoScam</title>
+		<title>CryptoScam</title>
         <link rel="icon" href="img/logo.png">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -51,7 +51,7 @@ if (!isset($_SESSION['loggedin'])) {
 	<body class="loggedin">
 	    <nav class="navtop">
 			<div>
-				<h1><a href="/"><i class="fas fa-home"></i>CrytpoScam</a></h1>
+				<h1><a href="/"><i class="fas fa-home"></i>CryptoScam</a></h1>
 				<a href="sell.php"><i class="fab fa-bitcoin"></i></i>Vender</a>
 				<a href="buy.php"><i class="fab fa-bitcoin"></i></i>Comprar</a>
 				<a href="withdraw.php"><i class="far fa-money-bill-alt"></i>Retirar</a>				<a href="deposit.php"><i class="fas fa-money-bill-alt"></i>Deposito</a>
@@ -79,7 +79,7 @@ if (!isset($_SESSION['loggedin'])) {
                     </label>
                     <br>
                     <div class="input-group">
-                        <input class="form-control" type="number" step="0.0000000000000000001" name="value" placeholder="Valor" id="value" required min="0" class="form-label">
+                        <input class="form-control" type="number" step="0.000000000000000001" min="0" max="9999" name="value" placeholder="Valor" id="value" required min="0" class="form-label">
                         <div class="input-group-append">
                             <span id="idrk" class="input-group-text">coin_name</span>
                         </div>
@@ -105,7 +105,6 @@ if (!isset($_SESSION['loggedin'])) {
                                     } else {
                                         echo '<option value="' . $id . '">' . $name . '</option>';
                                     }
-                                    // echo '<option value="'.$id.'">'.$name.'</option>';
                                 }
                             }
                         }
